@@ -58,16 +58,9 @@ jobs:
             echo "export DB_ENDPOINT=${{ secrets.DB_ENDPOINT }}" | sudo tee -a /etc/environment
             echo "export DB_USERNAME=${{ secrets.DB_USERNAME }}" | sudo tee -a /etc/environment
             echo "export DB_PASSWORD=${{ secrets.DB_PASSWORD }}" | sudo tee -a /etc/environment
-            
             source /etc/environment
-
-
             sudo mv /home/ubuntu/demo-0.0.1-SNAPSHOT.war /var/lib/tomcat10/webapps/demo.war  
-
-
             sudo chown tomcat:tomcat /var/lib/tomcat10/webapps/demo.war  
             sudo chmod 755 /var/lib/tomcat10/webapps/demo.war 
-
-
             sudo systemctl restart tomcat10
 
