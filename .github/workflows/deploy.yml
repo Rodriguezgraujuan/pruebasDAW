@@ -1,13 +1,13 @@
-name: Deploy Spring Boot to EC2 (Ubuntu)  # Nombre del workflow
+name: Deploy Spring Boot to EC2 (Ubuntu)
 
 on:
-  push:                                   # Workflow se activa cuando se hace push.
+  push:                                   
     branches:
-      - main                              # Solo se ejecuta si el push es en la rama main.
+      - main                              
 
 jobs:
-  build-and-deploy:                       # Define el trabajo llamado build-and-deploy.
-    runs-on: ubuntu-latest                # El trabajo se ejecuta en Ubuntu.
+  build-and-deploy:                       
+    runs-on: ubuntu-latest                
     env:
       DB_ENDPOINT: ${{ secrets.DB_ENDPOINT }}
       DB_USERNAME: ${{ secrets.DB_USERNAME }}
@@ -25,8 +25,8 @@ jobs:
 
       - name: Build and test with Maven
         run: |
-            mvn clean package        # Limpia y construye el proyecto
-            mvn test                 # Ejecuta las pruebas automÃ¡ticas
+            mvn clean package        
+            mvn test                
 
       - name: Copy .war to EC2
         uses: appleboy/scp-action@v0.1.5
